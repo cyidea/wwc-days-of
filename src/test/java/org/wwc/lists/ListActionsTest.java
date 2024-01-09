@@ -44,4 +44,24 @@ class ListActionsTest {
         boolean result = ListActions.hasCycle(head);
         assertThat(result).isTrue();
     }
+
+    @Test
+    void findMergeNode() {
+        SinglyLinkedListNode head = new SinglyLinkedListNode();
+        head.data = 1;
+
+        SinglyLinkedListNode second = new SinglyLinkedListNode();
+        second.data = 2;
+
+        SinglyLinkedListNode third = new SinglyLinkedListNode();
+        third.data = 3;
+
+        // link them:
+        head.next = second;
+        second.next = third;
+
+        int result = ListActions.findMergeNode(head, third);
+        assertThat(result).isEqualTo(3);
+    }
+
 }
