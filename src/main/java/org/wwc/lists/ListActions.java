@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * this is for <a href="https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem">hackerrank problem</a>
  */
-public class CycleDetection {
+public class ListActions {
     static boolean hasCycle(SinglyLinkedListNode head) {
 
         boolean retval = false;

@@ -3,9 +3,8 @@ package org.wwc.lists;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class CycleDetectionTest {
+class ListActionsTest {
 
     @Test
     void hasCycle() {
@@ -22,7 +21,7 @@ class CycleDetectionTest {
         head.next = second;
         second.next = third;
 
-        boolean result = CycleDetection.hasCycle(head);
+        boolean result = ListActions.hasCycle(head);
         assertThat(result).isFalse();
     }
 
@@ -42,7 +41,7 @@ class CycleDetectionTest {
         second.next = third;
         third.next = second;
 
-        boolean result = CycleDetection.hasCycle(head);
+        boolean result = ListActions.hasCycle(head);
         assertThat(result).isTrue();
     }
 }
