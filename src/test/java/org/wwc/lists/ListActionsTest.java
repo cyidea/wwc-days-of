@@ -2,6 +2,8 @@ package org.wwc.lists;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.EnumSet;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ListActionsTest {
@@ -64,4 +66,18 @@ class ListActionsTest {
         assertThat(result).isEqualTo(3);
     }
 
+    @Test
+    void removeDuplicates() {
+        ListActions listActions = new ListActions();
+
+        int[] nums = new int[]{1, 1, 1, 2, 2, 3};
+        int result = listActions.removeDuplicates(nums);
+        assertThat(result).isEqualTo(5);
+        assertThat(nums[0]).isEqualTo(1);
+        assertThat(nums[1]).isEqualTo(1);
+        assertThat(nums[2]).isEqualTo(2);
+        assertThat(nums[3]).isEqualTo(2);
+        assertThat(nums[4]).isEqualTo(3);
+
+    }
 }

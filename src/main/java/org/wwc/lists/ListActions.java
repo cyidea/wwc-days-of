@@ -7,6 +7,16 @@ import java.util.List;
 public class ListActions {
 
     /**
+     * Here is a leetcode problem regarding Arrays:
+     * <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/">remove duplicates</a>
+     * @param nums
+     * @return
+     */
+    public int removeDuplicates(int[] nums) {
+        return 0;
+    }
+
+    /**
      * this is for <a href="https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem">hackerrank problem</a>
      */
     static boolean hasCycle(SinglyLinkedListNode head) {
