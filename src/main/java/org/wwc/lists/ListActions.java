@@ -1,7 +1,10 @@
 package org.wwc.lists;
 
+import java.awt.color.ICC_ColorSpace;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ListActions {
@@ -13,7 +16,33 @@ public class ListActions {
      * @return
      */
     public int removeDuplicates(int[] nums) {
-        return 0;
+        Map<Integer, Integer> countmap = new HashMap<>();
+
+        int index = 0;
+        int replaceindex = nums.length - 1;
+        int end = nums.length - 1;
+        while (index <= end) {
+            int val = nums[index];
+            Integer count = countmap.get(val);
+            if (count == null) {
+                countmap.put(val, 1);
+                index++;
+            } else {
+                if (count < 2) {
+                    countmap.put(val, count+1);
+                    index++;
+                } else {
+                    // move the item to the end
+                    int val2 = nums[replaceindex];
+                    nums[replaceindex] = val;
+                    nums[index] = val2;
+                    replaceindex--;
+                    end = end - 1;
+                }
+            }
+        }
+
+        return end + 1;
     }
 
     /**
