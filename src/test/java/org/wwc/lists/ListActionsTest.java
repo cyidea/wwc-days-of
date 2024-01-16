@@ -80,4 +80,20 @@ class ListActionsTest {
         assertThat(nums[4]).isEqualTo(3);
 
     }
+
+    @Test
+    void checkValidGrid() {
+        ListActions listActions = new ListActions();
+        int[][] grid = {{0,11,16,5,20},{17,4,19,10,15},{12,1,8,21,6},{3,18,23,14,9},{24,13,2,7,22}};
+        boolean result = listActions.checkValidGrid(grid);
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void checkNotValidGrid() {
+        ListActions listActions = new ListActions();
+        int[][] grid = {{0,3,6},{5,8,1},{2,7,4}};
+        boolean result = listActions.checkValidGrid(grid);
+        assertThat(result).isFalse();
+    }
 }

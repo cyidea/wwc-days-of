@@ -1,6 +1,5 @@
 package org.wwc.lists;
 
-import java.awt.color.ICC_ColorSpace;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +7,127 @@ import java.util.Map;
 
 
 public class ListActions {
+
+    /**
+     * <a href="https://leetcode.com/problems/check-knight-tour-configuration/">check knight tour</a>
+     * @param grid
+     * @return
+     */
+
+    // putting the current location here, so don't need to create another data structure
+    int row;
+    int col;
+
+    List<Integer> visited = new ArrayList<>();
+
+    public boolean checkValidGrid(int[][] grid) {
+
+
+        boolean retval = false;
+
+        int n = grid.length;
+        // need a visited list
+        // the integer in this list is along 0, 1, 2, ..., n*n - 1
+
+        int value = 0; // this value increases until the end. what it the end val?
+        // there is no end val. until the visited contains exactly n*n
+
+        visited.add(0);
+        row = 0;
+        col = 0;
+
+        while (visited.size() < n * n) {
+            List<Integer> nextPossibleLocations = new ArrayList<>();
+
+            createPossibleLocations(grid, nextPossibleLocations);
+
+            if (nextPossibleLocations.size() > 0) {
+                boolean found = testLocations(nextPossibleLocations, n, grid, ++value);
+                if (!found)
+                    return false;
+                // now that value is increased
+                // can go to next round
+            } else {
+                break;
+            }
+
+        }
+
+        return retval;
+    }
+
+    private void createPossibleLocations(int[][] grid, List<Integer> nextPossibleLocations) {
+        // how many possible locations? given the row and col?
+        // there are 8 of them
+        int newrow = row-2;
+        int newcol = col-1;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);
+        }
+        newrow = row-2;
+        newcol = col+1;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+        newrow = row-1;
+        newcol = col-2;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+        newrow = row-1;
+        newcol = col+2;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+        newrow = row+1;
+        newcol = col-2;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+        newrow = row+1;
+        newcol = col+2;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+
+        newrow = row+2;
+        newcol = col-1;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+        newrow = row+2;
+        newcol = col+1;
+        if (newrow >= 0 && newcol >= 0) {
+            int newval = newrow * grid.length + newcol;
+            if (!visited.contains(newval))
+                nextPossibleLocations.add(newval);        }
+
+
+    }
+
+    private boolean testLocations(List<Integer> nextPossibleLocations, int n, int[][] grid, int nextval) {
+        // return the location where the value is at
+        boolean found = false;
+        for (Integer location: nextPossibleLocations) {
+            row = location/n;
+            col = location % n;
+            if (grid[row][col] == nextval) {
+                // found it, so this will be it
+                visited.add(location);
+                return true;
+            }
+        }
+        // didn't find anything, this will end the whole thing
+        return found;
+    }
 
     /**
      * Here is a leetcode problem regarding Arrays:
