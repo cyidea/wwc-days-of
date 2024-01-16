@@ -33,9 +33,7 @@ public class ListActions {
                     index++;
                 } else {
                     // move the item to the end
-                    int val2 = nums[replaceindex];
-                    nums[replaceindex] = val;
-                    nums[index] = val2;
+                    shiftItem(nums, val, index, replaceindex);
                     replaceindex--;
                     end = end - 1;
                 }
@@ -45,6 +43,17 @@ public class ListActions {
         return end + 1;
     }
 
+    // move item from start index to the end index
+    // and shift each of the items to the left at the same time
+    private void shiftItem(int[] nums, int val, int start, int end) {
+        int moveTo = start;
+
+        while (moveTo < end) {
+            nums[moveTo] = nums[moveTo + 1];
+            moveTo++;
+        }
+        nums[end] = val;
+    }
     /**
      * this is for <a href="https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem">hackerrank problem</a>
      */
