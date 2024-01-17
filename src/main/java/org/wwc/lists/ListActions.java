@@ -53,63 +53,72 @@ public class ListActions {
 
         }
 
+        System.out.println("visited size: " + visited.size());
+        if (visited.size() == n*n) { // all visited
+            retval = true;
+        }
+
         return retval;
     }
 
     private void createPossibleLocations(int[][] grid, List<Integer> nextPossibleLocations) {
         // how many possible locations? given the row and col?
         // there are 8 of them
+        // todo: this needs optimization !!
+
+        System.out.printf("working on createPossibleLocations for row: %d, col: %d\n", row, col);
         int newrow = row-2;
         int newcol = col-1;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);
         }
         newrow = row-2;
         newcol = col+1;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
         newrow = row-1;
         newcol = col-2;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
         newrow = row-1;
         newcol = col+2;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
         newrow = row+1;
         newcol = col-2;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
         newrow = row+1;
         newcol = col+2;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
 
         newrow = row+2;
         newcol = col-1;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
         newrow = row+2;
         newcol = col+1;
-        if (newrow >= 0 && newcol >= 0) {
+        if (newrow >= 0 && newcol >= 0 && newrow < grid.length && newcol < grid.length) {
             int newval = newrow * grid.length + newcol;
             if (!visited.contains(newval))
                 nextPossibleLocations.add(newval);        }
 
+        System.out.println("got possibleLocations: " + nextPossibleLocations.toString());
 
     }
 
